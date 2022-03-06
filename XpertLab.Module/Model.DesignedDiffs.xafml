@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Title="XpertLab">
+  <ActionDesign>
+    <Actions>
+      <Action Id="DialogOK" DefaultItemMode="FirstActiveItem" NullValuePrompt="" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyUser" Caption="Base User" />
+    <Class Name="XpertLab.Module.BusinessObjects.Dossier">
+      <AppearanceRules>
+        <AppearanceRule Id="EtatArchiveRouge" BackColor="255, 192, 192" TargetItems="*" Criteria="[Etat] = ##Enum#XpertLab.Module.BusinessObjects.Etat,Archivé#" IsNewNode="True" />
+        <AppearanceRule Id="EtatEnInstanceBleu" BackColor="192, 255, 255" Criteria="[Etat] = ##Enum#XpertLab.Module.BusinessObjects.Etat,En_Instance#" TargetItems="*" IsNewNode="True" />
+        <AppearanceRule Id="EtatResRapporteVert" BackColor="192, 255, 192" Criteria="[Etat] = ##Enum#XpertLab.Module.BusinessObjects.Etat,Resultat_Rapporté#" TargetItems="*" IsNewNode="True" />
+        <AppearanceRule Id="NouveauDossierVisibilite" Context="DetailView" Criteria="[Etat] = ##Enum#XpertLab.Module.BusinessObjects.Etat,Nouveau#" TargetItems="Conclusion,DossiDetails.Valeur" Visibility="Hide" AppearanceItemType="ViewItem" IsNewNode="True" />
+      </AppearanceRules>
+    </Class>
+    <Class Name="XpertLab.Module.BusinessObjects.Dossier_Detail" DefaultLookupListView="Dossier_DossiDetails_ListView">
+      <AppearanceRules>
+        <AppearanceRule Id="NouveauDossDetailVisibilite" Visibility="Hide" Criteria="[Doss.Etat] = ##Enum#XpertLab.Module.BusinessObjects.Etat,Nouveau#" TargetItems="Valeur" Context="Any" AppearanceItemType="LayoutItem" IsNewNode="True" />
+      </AppearanceRules>
+    </Class>
+  </BOModel>
+  <Options>
+    <LayoutManagerOptions RequiredFieldMark="*" />
+  </Options>
+  <SchemaModules>
+    <SchemaModule Name="CloneObjectModule" Version="21.2.4.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerModuleBase" Version="21.2.4.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="21.2.4.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views>
+    <ListView Id="ApplicationUser_ListView" Caption="Users" />
+    <ListView Id="Dossier_Categorie_Analyses_ListView">
+      <Columns>
+        <ColumnInfo Id="Nom" SortOrder="Descending" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Dossier_Detail_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="42.14463840399002">
+            <LayoutGroup Id="Dossier_Detail" RelativeSize="100" Direction="Vertical">
+              <LayoutGroup Id="Auto11a0397b-9c90-4730-9041-9d82588704a4" ShowCaption="False" Caption="" Direction="Horizontal" Index="0" RelativeSize="52.30769230769231" IsNewNode="True">
+                <LayoutGroup Id="Dossier_Detail_col1" ShowCaption="False" Index="0" RelativeSize="47.55747126436781" IsNewNode="True">
+                  <LayoutItem Id="ParamAnalyse" ViewItem="ParamAnalyse" Index="0" RelativeSize="47.05882352941177" IsNewNode="True" />
+                  <LayoutGroup Id="Auto7a62994e-eac7-4f95-ba5f-8d241fd4e8b3" ShowCaption="False" Caption="Auto7a62994e-eac7-4f95-ba5f-8d241fd4e8b3(6)" Index="1" RelativeSize="52.94117647058823" IsNewNode="True">
+                    <LayoutItem Id="Valeur" ViewItem="Valeur" Index="0" RelativeSize="100" IsNewNode="True" />
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutGroup Id="Dossier_Detail_col2" ShowCaption="False" Index="1" RelativeSize="52.44252873563219" IsNewNode="True">
+                  <LayoutGroup Id="Auto67d888d2-e990-4942-80ae-4a5410827e41" ShowCaption="False" Caption="Auto67d888d2-e990-4942-80ae-4a5410827e41(10)" Direction="Horizontal" Index="0" RelativeSize="51.470588235294116" IsNewNode="True">
+                    <LayoutItem Id="Prix" ViewItem="Prix" Index="0" RelativeSize="49.04109589041096" IsNewNode="True" />
+                    <LayoutItem Id="Remise" ViewItem="Remise" Index="1" RelativeSize="50.95890410958904" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Auto41084207-617d-426b-ad42-15b7cc829ed0" ShowCaption="False" Caption="Auto41084207-617d-426b-ad42-15b7cc829ed0(13)" Direction="Horizontal" Index="1" RelativeSize="48.529411764705884" IsNewNode="True">
+                    <LayoutItem Id="TTC" ViewItem="TTC" Index="0" RelativeSize="49.04109589041096" IsNewNode="True" />
+                    <LayoutItem Id="Etat" ViewItem="Etat" Index="1" RelativeSize="50.95890410958904" IsNewNode="True" />
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutItem Id="Observation" ViewItem="Observation" Index="1" RelativeSize="47.69230769230769" IsNewNode="True" />
+              <LayoutGroup Id="Dossier_Detail_col1" RelativeSize="47.55747126436781" Caption="Dossier_Detail_col1" Removed="True">
+                <LayoutGroup Id="Auto7a62994e-eac7-4f95-ba5f-8d241fd4e8b3" ShowCaption="False" Caption="Auto7a62994e-eac7-4f95-ba5f-8d241fd4e8b3(6)" Direction="Vertical" Index="1" RelativeSize="74.19354838709677" IsNewNode="True">
+                  <LayoutItem Id="Valeur" ViewItem="Valeur" Index="0" RelativeSize="32.608695652173914" IsNewNode="True" />
+                  <LayoutItem Id="Observation" ViewItem="Observation" Index="1" RelativeSize="67.3913043478261" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="Cout" Removed="True" />
+                <LayoutItem Id="ParamAnalyse" RelativeSize="25.806451612903224" />
+                <LayoutItem Id="Prix" Removed="True" />
+                <LayoutItem Id="Valeur" RelativeSize="50" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Dossier_Detail_col2" RelativeSize="52.44252873563219" Caption="Dossier_Detail_col2" Removed="True">
+                <LayoutGroup Id="Auto67d888d2-e990-4942-80ae-4a5410827e41" ShowCaption="False" Caption="Auto67d888d2-e990-4942-80ae-4a5410827e41(10)" Direction="Horizontal" Index="0" RelativeSize="28.225806451612904" IsNewNode="True">
+                  <LayoutItem Id="Prix" ViewItem="Prix" Index="0" RelativeSize="49.04109589041096" IsNewNode="True" />
+                  <LayoutItem Id="Remise" ViewItem="Remise" Index="1" RelativeSize="50.95890410958904" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Auto41084207-617d-426b-ad42-15b7cc829ed0" ShowCaption="False" Caption="Auto41084207-617d-426b-ad42-15b7cc829ed0(13)" Direction="Horizontal" Index="1" RelativeSize="71.7741935483871" IsNewNode="True">
+                  <LayoutItem Id="TTC" ViewItem="TTC" Index="0" RelativeSize="49.04109589041096" IsNewNode="True" />
+                  <LayoutItem Id="Etat" ViewItem="Etat" Index="1" RelativeSize="50.95890410958904" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="Etat" RelativeSize="50" Index="1" Removed="True" />
+                <LayoutItem Id="Remise" Removed="True" />
+                <LayoutItem Id="TTC" RelativeSize="26.666666666666668" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="57.85536159600998" Caption="Observation">
+            <LayoutItem Id="Observation" RelativeSize="100" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Dossier_DetailView">
+      <Items>
+        <PropertyEditor Id="TotPrix" AllowEdit="False" />
+        <PropertyEditor Id="TotRemise" AllowEdit="False" />
+        <PropertyEditor Id="TotTTC" AllowEdit="False" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="39.30635838150289">
+            <LayoutGroup Id="Dossier" RelativeSize="100">
+              <LayoutGroup Id="Dossier_col1" RelativeSize="50" Caption="Dossier_col1">
+                <LayoutGroup Id="Autoe50e6a2b-b88b-4171-bba7-0384ce3dfbe3" ShowCaption="False" Caption="Autoe50e6a2b-b88b-4171-bba7-0384ce3dfbe3(5)" Direction="Horizontal" Index="0" RelativeSize="63.91752577319588" IsNewNode="True">
+                  <LayoutGroup Id="Auto549fcdab-f3d4-4c92-b621-f9c5dda23a09" ShowCaption="False" Caption="Auto549fcdab-f3d4-4c92-b621-f9c5dda23a09(6)" Index="0" RelativeSize="50.77399380804953" IsNewNode="True">
+                    <LayoutItem Id="Num" ViewItem="Num" Index="0" RelativeSize="51.61290322580645" IsNewNode="True" />
+                    <LayoutItem Id="Date" ViewItem="Date" Index="1" RelativeSize="48.38709677419355" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Auto70b58469-1cc1-4dde-ad31-42a00dc874ab" ShowCaption="False" Caption="Auto70b58469-1cc1-4dde-ad31-42a00dc874ab(9)" Index="1" RelativeSize="49.22600619195047" IsNewNode="True">
+                    <LayoutItem Id="Patient" ViewItem="Patient" Index="0" RelativeSize="51.61290322580645" IsNewNode="True" />
+                    <LayoutItem Id="Medecin" ViewItem="Medecin" Index="1" RelativeSize="48.38709677419355" IsNewNode="True" />
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutItem Id="CodeBarre" RelativeSize="36.08247422680412" Index="1" />
+                <LayoutItem Id="Date" RelativeSize="17.391304347826086" Index="1" Removed="True" />
+                <LayoutItem Id="Etat" ViewItem="Etat" Index="2" RelativeSize="28.94736842105263" Removed="True" />
+                <LayoutItem Id="Medecin" RelativeSize="17.391304347826086" Index="2" Removed="True" />
+                <LayoutItem Id="Num" RelativeSize="23.91304347826087" Removed="True" />
+                <LayoutItem Id="Patient" RelativeSize="17.391304347826086" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Dossier_col2" RelativeSize="50" Direction="Vertical" Caption="Dossier_col2">
+                <LayoutGroup Id="Autofd58d77b-ef33-4745-a09e-04c0ac1e5f58" ShowCaption="False" Caption="Autofd58d77b-ef33-4745-a09e-04c0ac1e5f58(14)" Direction="Horizontal" Index="0" RelativeSize="36.08247422680412" IsNewNode="True">
+                  <LayoutItem Id="Etat" ViewItem="Etat" Index="0" RelativeSize="49.845201238390096" IsNewNode="True" />
+                  <LayoutItem Id="Versement" ViewItem="Versement" Index="1" RelativeSize="50.154798761609904" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Auto7430248d-d57a-4c1a-a31c-bccf2297f383" ShowCaption="False" Caption="Auto7430248d-d57a-4c1a-a31c-bccf2297f383(20)" Direction="Vertical" Index="1" RelativeSize="63.91752577319588" IsNewNode="True">
+                  <LayoutItem Id="Conclusion" ViewItem="Conclusion" SizeConstraintsType="Custom" MinSize="101, 62" Index="0" RelativeSize="100" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="Versement" ViewItem="Versement" Index="1" RelativeSize="34.15765069551777" Removed="True" />
+                <LayoutItem Id="TotPrix" Index="2" RelativeSize="15.189873417721518" Removed="True" />
+                <LayoutItem Id="TotTTC" Index="2" RelativeSize="54.054054054054056" Removed="True" />
+                <LayoutItem Id="TotRemise" Index="3" RelativeSize="18.3206106870229" Removed="True" />
+                <LayoutItem Id="AnalysesDemandees" RelativeSize="17.582417582417584" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Auto2239a17d-d46d-4f1f-a80c-c8fd83109470" ShowCaption="False" Caption="" Direction="Horizontal" Index="2" RelativeSize="9.248554913294798" IsNewNode="True">
+            <LayoutItem Id="TotPrix" ViewItem="TotPrix" Index="0" RelativeSize="35.02994011976048" IsNewNode="True" />
+            <LayoutItem Id="TotRemise" ViewItem="TotRemise" Index="1" RelativeSize="32.035928143712574" IsNewNode="True" />
+            <LayoutItem Id="TotTTC" ViewItem="TotTTC" Index="2" RelativeSize="32.93413173652694" IsNewNode="True" />
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" Caption="Conclusion" RelativeSize="3.076923076923077" Removed="True">
+            <LayoutItem Id="Conclusion" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Dossier_DetailView_Popup" CaptionColon=":" EnableCaptionColon="False" CaptionLocation="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" CaptionWordWrap="Default" EnableLayoutGroupImages="False" RequiredFieldMark="*" ClassName="XpertLab.Module.BusinessObjects.Dossier" Caption="Dossier_DetailView_Popup" AllowDelete="False" AllowEdit="False" AllowNew="False" IsNewNode="True">
+      <Items IsNewNode="True">
+        <PropertyEditor Id="AnalysesDemandees" PropertyName="AnalysesDemandees" IsNewNode="True" />
+        <PropertyEditor Id="Categorie_Analyses" PropertyName="Categorie_Analyses" View="Dossier_Categorie_Analyses_ListView" IsNewNode="True" />
+        <PropertyEditor Id="CodeBarre" PropertyName="CodeBarre" IsNewNode="True" />
+        <PropertyEditor Id="Conclusion" PropertyName="Conclusion" IsNewNode="True" />
+        <PropertyEditor Id="Date" PropertyName="Date" IsNewNode="True" />
+        <PropertyEditor Id="DossiDetails" PropertyName="DossiDetails" View="Dossier_DossiDetails_ListView" IsNewNode="True" />
+        <PropertyEditor Id="Etat" PropertyName="Etat" IsNewNode="True" />
+        <PropertyEditor Id="Medecin" PropertyName="Medecin" IsNewNode="True" />
+        <PropertyEditor Id="Num" PropertyName="Num" IsNewNode="True" />
+        <PropertyEditor Id="Parametre_Analyse_List" PropertyName="Parametre_Analyse_List" View="Dossier_Parametre_Analyse_List_ListView" IsNewNode="True" />
+        <PropertyEditor Id="Patient" PropertyName="Patient" IsNewNode="True" />
+        <PropertyEditor Id="TotCout" PropertyName="TotCout" IsNewNode="True" />
+        <PropertyEditor Id="TotPrix" PropertyName="TotPrix" AllowEdit="False" IsNewNode="True" />
+        <PropertyEditor Id="TotRemise" PropertyName="TotRemise" AllowEdit="False" IsNewNode="True" />
+        <PropertyEditor Id="TotTTC" PropertyName="TotTTC" AllowEdit="False" IsNewNode="True" />
+        <PropertyEditor Id="Versement" PropertyName="Versement" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="100" Direction="Vertical" Caption="Main" IsNewNode="True">
+          <LayoutGroup Id="Auto928ab61c-edaf-48bd-a529-98b7cd905efd" ShowCaption="False" Caption="" Direction="Horizontal" Index="0" RelativeSize="95.82309582309583" IsNewNode="True">
+            <LayoutGroup Id="Parametre_Analyse_List" ShowCaption="True" Index="0" RelativeSize="54.418103448275865" IsNewNode="True">
+              <LayoutItem Id="Parametre_Analyse_List" ViewItem="Parametre_Analyse_List" Index="0" RelativeSize="100" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="Categorie_Analyses" ShowCaption="True" Index="1" RelativeSize="45.581896551724135" IsNewNode="True">
+              <LayoutItem Id="Categorie_Analyses" ViewItem="Categorie_Analyses" Index="0" RelativeSize="100" IsNewNode="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutItem Id="MyAction" ViewItem="MyAction" Index="1" RelativeSize="4.176904176904177" IsNewNode="True" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Dossier_DossiDetails_ListView" MasterDetailMode="ListViewOnly" AllowEdit="True" NewItemRowPosition="Bottom">
+      <SplitLayout Direction="Vertical" ViewsOrder="DetailViewListView" />
+    </ListView>
+    <ListView Id="Dossier_ListView" DataAccessMode="Server" ImageName="BO_Document" Criteria="" MasterDetailMode="ListViewOnly">
+      <Filters>
+        <Filter Id="Tous" Index="0" IsNewNode="True" />
+        <Filter Id="EtatNouveau" Criteria="[Etat] = ##Enum#XpertLab.Module.BusinessObjects.Etat,Nouveau#" Caption="Nouveau" Index="1" IsNewNode="True" />
+        <Filter Id="EtatEnInstance" Criteria="[Etat] = ##Enum#XpertLab.Module.BusinessObjects.Etat,En_Instance#" Caption="En Instance" Index="2" IsNewNode="True" />
+        <Filter Id="EtatValidé" Criteria="[Etat] = ##Enum#XpertLab.Module.BusinessObjects.Etat,Resultat_Rapporté#" Caption="Validé" Index="3" IsNewNode="True" />
+        <Filter Id="EtatArchivé" Criteria="[Etat] = ##Enum#XpertLab.Module.BusinessObjects.Etat,Archivé#" Caption="Archivé" Index="4" IsNewNode="True" />
+        <Filter Id="TousSaufArchivé" Criteria="[Etat] &lt;&gt; ##Enum#XpertLab.Module.BusinessObjects.Etat,Archivé#" Caption="Tous Sauf Archivé" IsNewNode="True" />
+      </Filters>
+    </ListView>
+    <ListView Id="Patient_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Prenom" PropertyName="Prenom" Caption="Prénom" IsNewNode="True" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

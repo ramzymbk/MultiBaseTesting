@@ -1,0 +1,81 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Deterministic>false</Deterministic>
+    <AssemblyVersion>1.0.*</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Configurations>Debug;Release;EasyTest</Configurations>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Model.DesignedDiffs.xafml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DevExpress.ExpressApp" Version="21.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp.AuditTrail.Xpo" Version="21.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp.Chart" Version="21.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp.CloneObject.Xpo" Version="21.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="21.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance" Version="21.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards" Version="21.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp.Kpi" Version="21.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp.Notifications" Version="21.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp.Objects" Version="21.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp.Office" Version="21.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp.PivotChart" Version="21.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp.PivotGrid" Version="21.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp.ReportsV2" Version="21.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp.Scheduler" Version="21.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp.ScriptRecorder" Version="21.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp.Security.Xpo" Version="21.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp.StateMachine" Version="21.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp.TreeListEditors" Version="21.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp.Validation" Version="21.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp.ViewVariantsModule" Version="21.2.4" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="21.2.4" />
+    <PackageReference Include="DevExpress.Persistent.Base" Version="21.2.4" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="21.2.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Xpert.Common.Base\Xpert.Common.Base.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.ExpressApp.ReportsV2.Win.v21.2">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 21.2\Components\Offline Packages\devexpress.expressapp.reportsv2.win\21.2.4\lib\net5.0-windows\DevExpress.ExpressApp.ReportsV2.Win.v21.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v21.2">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 21.2\Components\Offline Packages\devexpress.win.navigation\21.2.4\lib\netcoreapp3.0\DevExpress.XtraEditors.v21.2.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="UnusableNodes.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes1.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes2.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes3.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes4.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes5.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes6.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes7.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes8.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+  </ItemGroup>
+</Project>

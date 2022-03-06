@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="Dossier_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Dossier">
+              <LayoutGroup Id="Dossier_col2">
+                <LayoutItem Id="TPrix" ViewItem="TPrix" Index="0" RelativeSize="28.94736842105263" Removed="True" />
+                <LayoutItem Id="TRemise" ViewItem="TRemise" Index="2" RelativeSize="21.05263157894737" Removed="True" />
+                <LayoutItem Id="TCout" RelativeSize="20.37037037037037" Removed="True" />
+                <LayoutGroup Id="Auto7430248d-d57a-4c1a-a31c-bccf2297f383">
+                  <LayoutItem Id="TTTC" ViewItem="TTTC" />
+                </LayoutGroup>
+                <LayoutGroup Id="Autodf985be0-fcc4-45c9-9d2a-d5121570a713">
+                  <LayoutItem Id="TPrix" ViewItem="TPrix" />
+                  <LayoutItem Id="TRemise" ViewItem="TRemise" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

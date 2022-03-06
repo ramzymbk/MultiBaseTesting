@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>Xpert.Common.Base</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DevExpress.Data" Version="21.2.3" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="21.2.3" />
+  </ItemGroup>
+
+</Project>

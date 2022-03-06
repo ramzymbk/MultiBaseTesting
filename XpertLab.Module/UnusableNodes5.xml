@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <ListView Id="Dossier_DossDetails_ListView" MasterDetailMode="ListViewAndDetailView">
+      <SplitLayout Id="SplitLayout" ViewsOrder="DetailViewListView" Direction="Vertical" />
+    </ListView>
+    <DetailView Id="Dossier_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="DossDetails_Group" Direction="Vertical" RelativeSize="67.81857451403887">
+            <LayoutItem Id="DossDetails" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>
