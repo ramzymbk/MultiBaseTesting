@@ -12,6 +12,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RuntimeDbChooser.Blazor.Server;
 
 namespace XpertLab.Blazor.Server {
     public class Program : IDesignTimeApplicationFactory {

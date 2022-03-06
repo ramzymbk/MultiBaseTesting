@@ -27,7 +27,7 @@ namespace XpertLab.Module {
             InitializeComponent();
         }
         public override IEnumerable<ModuleUpdater> GetModuleUpdaters(IObjectSpace objectSpace, Version versionFromDB) {
-            ModuleUpdater updater = new DatabaseUpdate.Updater(objectSpace, versionFromDB);
+            ModuleUpdater updater = new RuntimeDbChooser.Module.DatabaseUpdate.Updater(objectSpace, versionFromDB);
 
             PredefinedReportsUpdater reportsupdater = new PredefinedReportsUpdater(Application, objectSpace, versionFromDB);
 

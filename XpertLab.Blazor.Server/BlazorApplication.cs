@@ -7,17 +7,40 @@ using DevExpress.ExpressApp.SystemModule;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using DevExpress.ExpressApp.Xpo;
-using XpertLab.Blazor.Server.Services;
+using RuntimeDbChooser.Module.BusinessObjects;
+using System.Collections.Concurrent;
+using RuntimeDbChooser.Blazor.Server.Services;
 
-namespace XpertLab.Blazor.Server {
-    public partial class XpertLabBlazorApplication : BlazorApplication {
-        public XpertLabBlazorApplication() {
+namespace XpertLab.Blazor.Server
+{
+    public partial class XpertLabBlazorApplication : BlazorApplication
+    {
+        private static ConcurrentDictionary<string, bool> isCompatibilityChecked = new ConcurrentDictionary<string, bool>();
+
+        public XpertLabBlazorApplication()
+        {
             InitializeComponent();
         }
-        protected override void OnSetupStarted() {
+
+        protected override bool IsCompatibilityChecked
+        {
+            get
+            {
+                return isCompatibilityChecked.GetOrAdd(ConnectionString, false);
+            }
+
+            set
+            {
+                isCompatibilityChecked.TryAdd(ConnectionString, value);
+            }
+        }
+
+        protected override void OnSetupStarted()
+        {
             base.OnSetupStarted();
             IConfiguration configuration = ServiceProvider.GetRequiredService<IConfiguration>();
-            if(configuration.GetConnectionString("ConnectionString") != null) {
+            if (configuration.GetConnectionString("ConnectionString") != null)
+            {
                 ConnectionString = configuration.GetConnectionString("ConnectionString");
             }
 #if EASYTEST
@@ -26,42 +49,53 @@ namespace XpertLab.Blazor.Server {
             }
 #endif
 #if DEBUG
-            if(System.Diagnostics.Debugger.IsAttached && CheckCompatibilityType == CheckCompatibilityType.DatabaseSchema) {
+            if (System.Diagnostics.Debugger.IsAttached && CheckCompatibilityType == CheckCompatibilityType.DatabaseSchema)
+            {
                 DatabaseUpdateMode = DatabaseUpdateMode.UpdateDatabaseAlways;
             }
 #endif
         }
-        protected override void CreateDefaultObjectSpaceProvider(CreateCustomObjectSpaceProviderEventArgs args) {
+        protected override void CreateDefaultObjectSpaceProvider(CreateCustomObjectSpaceProviderEventArgs args)
+        {
             IXpoDataStoreProvider dataStoreProvider = GetDataStoreProvider(args.ConnectionString, args.Connection);
             args.ObjectSpaceProviders.Add(new SecuredObjectSpaceProvider((ISelectDataSecurityProvider)Security, dataStoreProvider, true));
             args.ObjectSpaceProviders.Add(new NonPersistentObjectSpaceProvider(TypesInfo, null));
         }
-        private IXpoDataStoreProvider GetDataStoreProvider(string connectionString, System.Data.IDbConnection connection) {
-            XpoDataStoreProviderAccessor accessor = ServiceProvider.GetRequiredService<XpoDataStoreProviderAccessor>();
-            lock(accessor) {
-                if(accessor.DataStoreProvider == null) {
-                    accessor.DataStoreProvider = XPObjectSpaceProvider.GetDataStoreProvider(connectionString, connection, true);
-                }
-            }
-            return accessor.DataStoreProvider;
+
+        private IXpoDataStoreProvider GetDataStoreProvider(string connectionString, System.Data.IDbConnection connection)
+        {
+            return ServiceProvider.GetRequiredService<XpoDataStoreProviderAccessor>().GetDataStoreProvider(connectionString, connection);
         }
-        private void XpertLabBlazorApplication_DatabaseVersionMismatch(object sender, DatabaseVersionMismatchEventArgs e) {
+
+        protected override void OnLoggingOn(LogonEventArgs args)
+        {
+            base.OnLoggingOn(args);
+            string targetDataBaseName = ((IDatabaseNameParameter)args.LogonParameters).DatabaseName;
+            ((XPObjectSpaceProvider)ObjectSpaceProviders[0]).SetDataStoreProvider(
+                GetDataStoreProvider(MSSqlServerChangeDatabaseHelper.PatchConnectionString(targetDataBaseName, ConnectionString),
+                null));
+        }
+        private void XpertLabBlazorApplication_DatabaseVersionMismatch(object sender, DatabaseVersionMismatchEventArgs e)
+        {
 #if EASYTEST
             e.Updater.Update();
             e.Handled = true;
 #else
-            if(System.Diagnostics.Debugger.IsAttached) {
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
                 e.Updater.Update();
                 e.Handled = true;
             }
-            else {
+            else
+            {
                 string message = "The application cannot connect to the specified database, " +
                     "because the database doesn't exist, its version is older " +
                     "than that of the application or its schema does not match " +
                     "the ORM data model structure. To avoid this error, use one " +
                     "of the solutions from the https://www.devexpress.com/kb=T367835 KB Article.";
 
-                if(e.CompatibilityError != null && e.CompatibilityError.Exception != null) {
+                if (e.CompatibilityError != null && e.CompatibilityError.Exception != null)
+                {
                     message += "\r\n\r\nInner exception: " + e.CompatibilityError.Exception.Message;
                 }
                 throw new InvalidOperationException(message);
