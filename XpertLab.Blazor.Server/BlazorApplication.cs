@@ -7,9 +7,9 @@ using DevExpress.ExpressApp.SystemModule;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using DevExpress.ExpressApp.Xpo;
-using RuntimeDbChooser.Module.BusinessObjects;
 using System.Collections.Concurrent;
 using RuntimeDbChooser.Blazor.Server.Services;
+using Chooser.Module.BusinessObjects;
 
 namespace XpertLab.Blazor.Server
 {
@@ -70,10 +70,14 @@ namespace XpertLab.Blazor.Server
         protected override void OnLoggingOn(LogonEventArgs args)
         {
             base.OnLoggingOn(args);
-            string targetDataBaseName = ((IDatabaseNameParameter)args.LogonParameters).DatabaseName;
-            ((XPObjectSpaceProvider)ObjectSpaceProviders[0]).SetDataStoreProvider(
-                GetDataStoreProvider(MSSqlServerChangeDatabaseHelper.PatchConnectionString(targetDataBaseName, ConnectionString),
-                null));
+            string targetDataBaseName = ((IDatabaseNameParameter)args.LogonParameters).NameConfigDB;
+            string conn = MSSqlServerChangeDatabaseHelper.PatchConnectionString(targetDataBaseName, ConnectionString);
+            if (!string.IsNullOrEmpty(conn))
+            {
+                ((XPObjectSpaceProvider)ObjectSpaceProviders[0]).SetDataStoreProvider(
+                GetDataStoreProvider(conn, null));
+            }
+
         }
         private void XpertLabBlazorApplication_DatabaseVersionMismatch(object sender, DatabaseVersionMismatchEventArgs e)
         {

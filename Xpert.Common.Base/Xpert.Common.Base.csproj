@@ -8,6 +8,8 @@
   <ItemGroup>
     <PackageReference Include="DevExpress.Data" Version="21.2.4" />
     <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="21.2.4" />
+    <PackageReference Include="Json.Net" Version="1.0.33" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
 </Project>

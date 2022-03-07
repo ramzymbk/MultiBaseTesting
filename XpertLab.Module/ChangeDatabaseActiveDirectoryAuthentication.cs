@@ -1,7 +1,7 @@
 ﻿#if !DXCORE3 && !NETSTANDARD
+using Chooser.Module.BusinessObjects;
 using DevExpress.ExpressApp.Security;
 using DevExpress.ExpressApp.Security.Strategy;
-using RuntimeDbChooser.Module.BusinessObjects;
 
 namespace RuntimeDbChooser.Module {
     public class ChangeDatabaseActiveDirectoryAuthentication : AuthenticationActiveDirectory<SecuritySystemUser, CustomLogonParametersForActiveDirectoryAuthentication> {

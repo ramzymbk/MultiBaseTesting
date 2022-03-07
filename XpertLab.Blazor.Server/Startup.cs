@@ -1,4 +1,5 @@
-﻿using DevExpress.ExpressApp.Blazor.Services;
+﻿using Chooser.Module.BusinessObjects;
+using DevExpress.ExpressApp.Blazor.Services;
 using DevExpress.ExpressApp.Security;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -8,7 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RuntimeDbChooser.Blazor.Server.Services;
-using RuntimeDbChooser.Module.BusinessObjects;
 using XpertLab.Blazor.Server;
 using XpertLab.Blazor.Server.Services;
 

@@ -9,7 +9,7 @@ using DevExpress.ExpressApp.Xpo;
 using DevExpress.ExpressApp.Security;
 using DevExpress.ExpressApp.Security.ClientServer;
 using DevExpress.ExpressApp.Security.Strategy;
-using RuntimeDbChooser.Module.BusinessObjects;
+using Chooser.Module.BusinessObjects;
 
 namespace XpertLab.Win
 {
@@ -29,8 +29,8 @@ namespace XpertLab.Win
         protected override void OnLoggingOn(LogonEventArgs args)
         {
             base.OnLoggingOn(args);
-            string targetDataBaseName = ((IDatabaseNameParameter)args.LogonParameters).DatabaseName;
-            ObjectSpaceProvider.ConnectionString = MSSqlServerChangeDatabaseHelper.PatchConnectionString(targetDataBaseName, ConnectionString);
+            string targetConfigName = ((IDatabaseNameParameter)args.LogonParameters).NameConfigDB;
+            ObjectSpaceProvider.ConnectionString = MSSqlServerChangeDatabaseHelper.PatchConnectionString(targetConfigName, ConnectionString);
         }
         protected override bool IsCompatibilityChecked
         {
