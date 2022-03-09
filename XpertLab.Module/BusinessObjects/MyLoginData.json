@@ -2,14 +2,14 @@
   "ListConfigDB": [
     {
       "ConfigName": "XpertClinic",
-      "ServerName": "XPERT-SOUFIANE\\SQLEXPRESS2019",
+      "ServerName": "RAMZI\\SQLEXPRESS2019",
       "DatabaseName": "Clinic",
       "UserName": "sa",
       "Password": "ounmadhr"
     },
     {
       "ConfigName": "XpertLab",
-      "ServerName": "XPERT-SOUFIANE\\SQLEXPRESS2019",
+      "ServerName": "RAMZI\\SQLEXPRESS2019",
       "DatabaseName": "XpertLab",
       "UserName": "sa",
       "Password": "ounmadhr"
